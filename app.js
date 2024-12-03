@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+var cors = require('cors')
 const app = express();
 
 require('dotenv').config();
@@ -10,6 +11,8 @@ require('./configs/db.js');
 if(process.env.ENVIRONMENT !== 'testing'){
     require('./configs/db.js').connect();
 }
+
+app.use(cors())
 
 app.set('view engine','html');
 app.use(express.json());
